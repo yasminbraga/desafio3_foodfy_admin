@@ -1,9 +1,10 @@
 const express = require('express')
 const routes = express.Router()
 
-routes.get("/", function(req, res) {
-  return res.render('admin/index')
-})
+const recipes = require('./controllers/recipes')
+
+routes.get("/", recipes.index)
+routes.get("/admin/recipes", recipes.index)
 
 
 
