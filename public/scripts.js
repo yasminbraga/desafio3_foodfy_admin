@@ -1,26 +1,32 @@
-const cards = document.querySelectorAll('.card')
+function addIngredient() {
+    const ingredients = document.querySelector("#ingredients")
+    const fieldContainer = document.querySelectorAll(".ingredient")
 
-for (let card of cards) {
-    card.addEventListener("click", function(){
-        recipeId = card.getAttribute('id')
-        window.location.href = `/recipe/${recipeId}`
-    })
+    const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true)
+
+    if (newField.children[0].value == "") return false
+
+    newField.children[0].value = ""
+    ingredients.appendChild(newField)
 }
 
+document
+    .querySelector(".add-ingredient")
+    .addEventListener("click", addIngredient)
 
-const contentList = document.querySelectorAll('.content-list')
 
-for (let attribute of contentList) {
-    const button = attribute.querySelector('button')
-    const content = attribute.querySelector('.content')
-    button.addEventListener("click", function(){
-        if (button.innerHTML == "MOSTRAR") {
-            content.classList.add('show-content')
-            button.innerHTML = "ESCONDER"
-        }
-        else if (button.innerHTML == "ESCONDER") {
-            content.classList.remove('show-content')
-            button.innerHTML = "MOSTRAR"
-        }
-    })
+function addPreparation() {
+    const preparations = document.querySelector("#preparations")
+    const fieldContainer = document.querySelectorAll(".preparation")
+
+    const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true)
+
+    if (newField.children[0].value == "") return false
+
+    newField.children[0].value = ""
+    preparations.appendChild(newField)
 }
+
+document
+    .querySelector(".add-preparation")
+    .addEventListener("click", addPreparation)
